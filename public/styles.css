@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Poppins:wght@200&family=Source+Code+Pro&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background: rgb(222, 207, 180);
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 140px);
+}
+
+header {
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgb(121, 121, 121);
+    height: 80px;
+    border-bottom: 1px solid rgb(74, 74, 74);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.errors {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+    margin-left: 18px;
+}
+
+.success {
+    color: green;
+    margin-left: 18px;
+}
+
+
+.hide {
+    display: none;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgb(217, 217, 217);
+    padding: 3px 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+fieldset {
+    position: relative;
+    width: 500px;
+    min-height: 400px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+    background: white;
+    border-radius: 5px;
+    border-top: .2px solid gray;
+    border-left: .2px solid gray;
+    border-right: .2px solid gray;
+    margin: 0 2px;
+}
+
+.input-container {
+    padding-top: 5px;
+    margin: 0 20px;
+}
+
+.days-title {
+    margin: 10px 20px;
+}
+
+.buttons {
+    background-color: rgb(244, 244, 244);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.days-button {
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: .2s ease;
+    min-width: 120px;
+}
+
+.days-button:hover {
+    background-color: rgb(242, 177, 65);
+    color: rgb(134, 22, 22);
+}
+
+.user-btn {
+    width: 100%;
+    background-color: transparent;
+    opacity: .8;
+}
+
+.user-btn:hover {
+    opacity: 1;
+}
+
+.radio-selectors {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(236, 236, 236);
+    transition: .3s ease;
+}
+
+.checkbox-container:hover {
+    background-color: rgb(104, 104, 104);
+    color: white;
+    font-weight: bold;
+}
+
+.checkbox-items {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.days-name {
+    font-size: 16px;
+}
+
+.days {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-items input[type="checkbox"]:not(:checked),
+.checkbox-items input[type="checkbox"]:checked {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
+
+
+.checkbox-items input[type="checkbox"]:not(:checked):before,
+.checkbox-items input[type="checkbox"]:checked:before {
+    content: '';
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    background-color: #8a8a8a;
+    outline: none;
+}
+
+.checkbox-items input[type="checkbox"]:not(:checked):after,
+.checkbox-items input[type="checkbox"]:checked:after {
+    content: '✔';
+    position: absolute;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    justify-content: center;
+    font-size: 24px;
+    /* background-color: #5cf1b3; */
+    line-height: 0.8;
+    background-color: rgb(242, 177, 65);
+    color: rgb(134, 22, 22);
+    transition: all .2s;
+}
+
+.checkbox-items input[type="checkbox"]:not(:checked):after {
+    opacity: 0;
+    transform: scale(0);
+    background-color: #5cf1b3;
+}
+
+.checkbox-items input[type="checkbox"]:checked:after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.back-button {
+    margin: 0 10px;
+    /* width: 100px; */
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: end;
+    padding: 12px 0;
+}
+
+.color {
+    color: rgb(40, 40, 40);
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.green {
+    width: 16px;
+    height: 16px;
+    background: green;
+    color: green;
+    border-radius: 50%;
+}
+
+.yellow {
+    width: 16px;
+    height: 16px;
+    background: yellow;
+    border-radius: 50%;
+}
+
+.red {
+    width: 16px;
+    height: 16px;
+    background: red;
+    border-radius: 50%;
+}
+
+.colors {
+    color: rgb(40, 40, 40);
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: space-between;
+    width: 70px;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.purple {
+    width: 16px;
+    height: 16px;
+    background: purple;
+    border-radius: 50%;
+}
+
+.pink {
+    width: 16px;
+    height: 16px;
+    background: pink;
+    border-radius: 50%;
+}
+
+footer {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: rgb(161, 161, 161);
+    border-top: 1px solid rgb(74, 74, 74);
+}

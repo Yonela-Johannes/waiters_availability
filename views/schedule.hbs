@@ -1,0 +1,37 @@
+<div class="main-container">
+    <fieldset>
+        <legend>Waiter's Schedule</legend>
+        <label class="errors error">{{error}}</label>
+        <label class="errors success">{{success}}</label>
+        <form action="/schedule/{{username}}" method="POST">
+            <p class="name username">{{username}}</p>
+            <div class="bottom-container">
+                <div class="days-title">Select Days Available:
+                </div>
+                <div class="radio-selectors">
+                    <div class="days">
+                        {{#each days}}
+                        <div class="checkbox-container">
+                            <div class="days-name">{{day}}</div>
+                            <div class="checkbox-items">
+                                <input name='day' type="checkbox" class='day' value="{{id}}"><span
+                                    class="checkmark"></span></input>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="days-button">
+                    Submit
+                </button>
+        </form>
+        {{!-- <a href="/">
+            <button class="days-button back-button">
+                back
+            </button>
+        </a> --}}
+</div>
+</fieldset>
+</div>

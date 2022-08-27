@@ -1,0 +1,54 @@
+<div class="main-container">
+    <fieldset>
+        <legend>Waiter Available</legend>
+        <div class="table-container">
+            <table>
+                <colgroup>
+                    <col span="6" style="">
+                    <col span="8" style="background-color: pink">
+                </colgroup>
+                {{#days}}
+                <tr>
+                    <th>{{day}}</th>
+                </tr>
+                {{/days}}
+                {{#waiters}}
+                <td>
+                    <p class="name">{{name}}</p>
+                    </a>
+                    <p>{{day}}</p>
+                </td>
+                {{/waiters}}
+            </table>
+        </div>
+        <div class="">
+            <table>
+                <tr>
+                    <th>
+                        Waiters
+                    </th>
+                </tr>
+                {{#allWaiters}}
+                <td>
+                    <a href="/waiter/{{name}}">
+                        <button class="days-button user-btn">
+                            <p>{{name}}</p>
+                        </button>
+                    </a>
+                </td>
+                {{/allWaiters}}
+            </table>
+
+        </div>
+        <div class="buttons">
+            <button type="submit" class="days-button">
+                Reset
+            </button>
+        </div>
+        <div class="instructions">
+            <p class="color">Over Scheduled<span class="green"></span></p>
+            <p class="color">Scheduled<span class="yellow"></span></p>
+            <p class="color">Not Scheduled<span class="red"></span></p>
+        </div>
+    </fieldset>
+</div>

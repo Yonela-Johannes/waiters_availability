@@ -1,0 +1,53 @@
+table,
+th,
+td {
+    border: .2px solid gray;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+td {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #cfcfcf;
+}
+
+td:first-child,
+th:first-child {
+    color: black;
+    background-color: #D6EEEE;
+}
+
+th {
+    background-color: #767676;
+}
+
+.login-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.table-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(247, 243, 243);
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+.login {
+    flex-direction: column;
+}
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}

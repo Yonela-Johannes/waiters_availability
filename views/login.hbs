@@ -1,0 +1,29 @@
+<div class="main-container">
+    <fieldset>
+        <legend>Signin
+            <img src='/img/waiter.png' class='login-image' />
+        </legend>
+        <p>Enter your name to signin or signup</p>
+        <label class="errors error">{{error}}</label>
+        <label class="errors success">{{success}}</label>
+        <div class="table-container">
+            <form action='/' method="POST">
+                <table>
+                    <div class="input-container login-input">
+                        <label class="name-label" for="name">Name:</label>
+                        <input class='name' type="text" name='name' placeholder="Enter your name" />
+                    </div>
+                </table>
+                <div class="input-container buttons login">
+                    <button type="submit" class="days-button user-btn">
+                        Login
+                    </button>
+                    <label class="name-label" for="name">Proceed to home page</label>
+                </div>
+            </form>
+        </div>
+        <div class="instructions">
+            <p class="colors">Working<span class="purple"></span></p>
+        </div>
+    </fieldset>
+</div>
