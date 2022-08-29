@@ -37,7 +37,7 @@ const Routes = (waiter, waitersDb) => {
         waiter.setName(username)
         waiter.setDays(day)
         const getDay = waiter.getDays()
-        console.log('GET DAY', getDay)
+        // console.log('GET DAY', getDay)
         const days = await waitersDb.getDays()
         const getWaiter = await waitersDb.getUser(username)
         const { id } = getWaiter

@@ -39,13 +39,12 @@ const WaitersDb = (db) => {
         let mainResult = []
         if (id?.length > 1) {
             result = await db.any('SELECT name, day FROM days_available INNER JOIN waiters ON waiter_id = waiters.id INNER JOIN days ON day_available = days.id GROUP BY days.day, waiters.name;')
-            result = await db.any('SELECT name, day FROM days_available INNER JOIN waiters ON waiter_id = waiters.id INNER JOIN days ON day_available = days.id GROUP BY days.day, waiters.name ORDER BY days.day;')
             days = result?.map(item => item.day)
             const day = [...new Set(days)]
+            console.log(day)
             for (let x = 0; x < result.length; x++) {
-                console.log(days[x])
-                mainResult = await db.any('SELECT DISTINCT (day), waiter_id, name, count(name) FROM waiters as W JOIN days_available as DA ON w.id = DA.Waiter_id JOIN days ON DA.day_available = days.id GROUP BY days.day, da.waiter_id, name HAVING COUNT(name) >= 1', ['Monday'])
-                // mainResult = await db.any('SELECT * FROM days_available WHERE name IN (SELECT name, day FROM days_available JOIN days ON day_available = days.id JOIN waiters ON waiter_id = waiters.id);', ['Monday'])
+                // console.log(days[x])
+                mainResult = await db.any('SELECT DISTINCT day, waiter_id, name FROM waiters as W JOIN days_available as DA ON w.id = DA.Waiter_id JOIN days ON DA.day_available = days.id WHERE days.day = $1', ['Monday'])
             }
             console.log(mainResult)
             return result
