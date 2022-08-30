@@ -1,12 +1,12 @@
 <div class="main-container">
-    <fieldset>
-        <legend>Weekly Schedule</legend>
+    <div class="main-wrapper">
+        <div class="title">Weekly Schedule</div>
         <div class="table-container">
             <table>
-                <colgroup>
+                {{!-- <colgroup>
                     <col span="4" style="background-color: pink">
                     <col span="8" style="background-color: rgb(161, 161, 161)">
-                </colgroup>
+                </colgroup> --}}
                 <tr>
                     {{#each weekDays}}
                     <th>{{day}}</th>
@@ -14,32 +14,14 @@
                 </tr>
                 <tr>
                     {{#days}}
-                    <th>{{day}}</th>
+                    <td>{{#each this}}
+                        <p class="name">{{this.name}}</p>
+                        {{/each}}
+                    </td>
                     {{/days}}
-                </tr>
-                <tr>
-                    {{#each days}}
-                    <td>
-                        {{name}}
-                    </td>
-                    {{/each}}
-                </tr>
-                <tr>
-                    {{#each waiters}}
-                    <td>
-                        <a href="/waiter/{{name}}">
-                            <button class="days-button user-btn">
-                                <p>{{name}}</p>
-                            </button>
-                        </a>
-                    </td>
-                    {{/each}}
                 </tr>
                 </tr>
             </table>
         </div>
-        <div class="instructions">
-            <p class="colors">Working<span class="purple"></span></p>
-        </div>
-    </fieldset>
+    </div>
 </div>

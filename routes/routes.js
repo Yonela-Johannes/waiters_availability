@@ -21,6 +21,9 @@ const Routes = (waiter, waitersDb) => {
         let id = waiter.convertObj(waiters)
         const days = await waitersDb.getDay(id)
         res.render('index', {
+            week: waitersDb.getCurrentWeek,
+            nextweek: waitersDb.getCurrentWeek() + 1,
+            date: waitersDb.getCurrentDate,
             weekDays,
             days,
             waiters,
@@ -36,8 +39,8 @@ const Routes = (waiter, waitersDb) => {
         const { day } = req.body
         waiter.setName(username)
         waiter.setDays(day)
+        const getD = await getDay()
         const getDay = waiter.getDays()
-        // console.log('GET DAY', getDay)
         const days = await waitersDb.getDays()
         const getWaiter = await waitersDb.getUser(username)
         const { id } = getWaiter
@@ -60,6 +63,9 @@ const Routes = (waiter, waitersDb) => {
         const { id } = waiter
         const days_available = await waitersDb.getDay(id)
         res.render('schedule', {
+            week: waitersDb.getCurrentWeek,
+            nextweek: waitersDb.getCurrentWeek() + 1,
+            date: waitersDb.getCurrentDate,
             username,
             days_available,
             days,
@@ -80,11 +86,20 @@ const Routes = (waiter, waitersDb) => {
     }
 
     const getAdminPage = async (req, res) => {
+        const weekDays = await waitersDb.getDays()
         const result = await waitersDb.getAvailableDays()
         const allWaiters = await waitersDb.getUsers()
-        const waiters = await waitersDb.getWaiters()
+        const waiters = await waitersDb.getUsers()
+        let id = waiter.convertObj(waiters)
+        const days = await waitersDb.getDay(id)
+        // console.log(days)
+        // console.log(days)
         res.render('admin', {
-            // days,
+            week: waitersDb.getCurrentWeek,
+            nextweek: waitersDb.getCurrentWeek() + 1,
+            date: waitersDb.getCurrentDate,
+            days,
+            weekDays,
             waiters,
             result,
             allWaiters
@@ -104,6 +119,9 @@ const Routes = (waiter, waitersDb) => {
             days_available = [username + ' you have no days scheduled']
         }
         res.render('waiter', {
+            week: waitersDb.getCurrentWeek,
+            nextweek: waitersDb.getCurrentWeek() + 1,
+            date: waitersDb.getCurrentDate,
             username,
             days_available,
             waiter

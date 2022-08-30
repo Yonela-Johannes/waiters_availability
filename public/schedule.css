@@ -1,24 +1,26 @@
 table,
 th,
 td {
-    border: .2px solid gray;
+    /* border-radius: 15px; */
     border-collapse: collapse;
     padding: 5px;
 }
 
 td {
+    text-align: right;
+    text-justify: start;
     font-size: 12px;
     font-weight: bold;
 }
 
 tr:nth-child(even) {
-    background-color: #cfcfcf;
+    /* background-color: #cfcfcf; */
 }
 
 td:first-child,
 th:first-child {
     color: black;
-    background-color: #D6EEEE;
+    background-color: #d6eeeea8;
 }
 
 th {

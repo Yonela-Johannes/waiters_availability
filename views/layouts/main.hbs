@@ -8,26 +8,38 @@
     <link rel="stylesheet" href="/schedule.css" />
     <link rel="stylesheet" href="/nav.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    </body>
 </head>
 
 <body>
     <header>
-        <div class="logo">
-            <a href="/weekly-schedule">
-                <span class="w">W</span>
-                <span class="a">A</span>
-            </a>
-        </div>
-        <div class="nav-content">
-            <a href="/weekly-schedule">
-                <h3>Home</h3>
-            </a>
-            <a href="/admin">
-                <h3>Admin</h3>
-            </a>
-            <a href="/">
-                <img src='/img/waiter.png' class='login-image' />
-            </a>
+        <div class="navbar">
+            <div class="logo">
+                <a href="/weekly-schedule">
+                    <span class="w">W</span>
+                    <span class="a">A</span>
+                </a>
+                <input placeholder="search waiter" type="text" name="name" />
+            </div>
+            <div class="nav-content">
+                <a href="/weekly-schedule">
+                    <h3 class="nav-title">
+                        <i class="fa-solid fa-house-user"></i>
+                        Home
+                    </h3>
+                </a>
+                <a href="/admin">
+                    <h3 class="nav-title">Admin</h3>
+                </a>
+            </div>
+            <div class="navbar">
+                <div>
+                    <i class="fa-solid fa-house-user"></i>
+                    <p class="week">Current Week: {{week}}</p>
+                    <p class="week">Next Week: {{nextweek}}</p>
+                    <p class="week">Time: {{date}}</p>
+                </div>
+            </div>
         </div>
     </header>
     <div class="container">
@@ -41,6 +53,5 @@
         </div>
     </footer>
     <script src="../../error.js"></script>
-</body>
 
 </html>

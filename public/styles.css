@@ -5,28 +5,34 @@
     margin: 0;
     border: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans',
+        sans-serif !important;
 }
 
 .container {
-    background: rgb(222, 207, 180);
-    width: 100vw;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 140px);
+    min-height: calc(100vh - 300px);
+    overflow: hidden;
+    margin-top: 200px;
 }
 
 header {
-    display: flex;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
+    padding: 10px 20px;
+    background-color: crimson;
+    min-height: 80px;
+    border-bottom: 1px solid rgb(175, 20, 0);
+}
+
+.navbar {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    background-color: rgb(121, 121, 121);
-    height: 80px;
-    border-bottom: 1px solid rgb(74, 74, 74);
 }
 
 .nav-content {
@@ -39,8 +45,33 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    /* min-height: 100vh; */
     padding: 20px;
+    background-color: white;
+}
+
+.main-wrapper {
+    background: rgb(222, 207, 180);
+    min-height: 100vh;
+    padding: 40px;
+}
+
+input {
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid rgb(242, 177, 65);
+    outline: 1px solid rgb(134, 22, 22);
+}
+
+
+input::placeholder {
+    color: rgb(134, 22, 22);
+    font-size: 16px;
+}
+
+input:focus {
+    outline: 1px solid rgb(242, 177, 65);
+    border: 1px solid rgb(134, 22, 22);
 }
 
 .errors {
@@ -69,8 +100,8 @@ header {
 }
 
 .name {
-    font-size: 16px;
-    font-weight: bold;
+    display: flex;
+    font-size: 14px;
     background-color: rgb(217, 217, 217);
     padding: 3px 5px;
     border-radius: 5px;
@@ -254,6 +285,10 @@ legend {
 }
 
 .instructions {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -264,13 +299,14 @@ legend {
 .color {
     color: rgb(40, 40, 40);
     display: flex;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     align-items: center;
     justify-content: space-between;
     width: 120px;
     cursor: pointer;
     margin: 5px 0;
+    font-weight: bold;
 }
 
 .green {
@@ -329,4 +365,26 @@ footer {
     width: 100%;
     background-color: rgb(161, 161, 161);
     border-top: 1px solid rgb(74, 74, 74);
+}
+
+.bottom-container {
+    padding: 40px 10px;
+    background-color: white;
+    height: 100vh;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.list-item {
+    border-bottom: 1px solid gray;
+    padding: 10px;
+    transition: .2s ease;
+    width: 100%;
+}
+
+.list-item:hover {
+    background-color: gray;
+    color: white;
 }

@@ -1,54 +1,53 @@
 <div class="main-container">
-    <fieldset>
-        <legend>Waiter Available</legend>
+    <div class="main-wrapper">
+        <p class="title">Waiters Available</p>
         <div class="table-container">
             <table>
                 <colgroup>
                     <col span="6" style="">
                     <col span="8" style="background-color: pink">
                 </colgroup>
-                {{#days}}
                 <tr>
+                    {{#each weekDays}}
                     <th>{{day}}</th>
+                    {{/each}}
                 </tr>
-                {{/days}}
-                {{#waiters}}
-                <td>
-                    <p class="name">{{name}}</p>
-                    </a>
-                    <p>{{day}}</p>
-                </td>
-                {{/waiters}}
-            </table>
-        </div>
-        <div class="">
-            <table>
                 <tr>
-                    <th>
-                        Waiters
-                    </th>
+                    {{#days}}
+                    <td>{{#each this}}
+                        {{this.name}}
+                        {{/each}}
+                    </td>
+                    {{/days}}
                 </tr>
-                {{#allWaiters}}
-                <td>
-                    <a href="/waiter/{{name}}">
-                        <button class="days-button user-btn">
-                            <p>{{name}}</p>
-                        </button>
-                    </a>
-                </td>
-                {{/allWaiters}}
             </table>
-
         </div>
-        <div class="buttons">
-            <button type="submit" class="days-button">
-                Reset
-            </button>
+        <div class="bottom-container">
+            Waiters
+            {{#allWaiters}}
+            <ul class="list">
+                <a href="/waiter/{{name}}">
+                    <li class="list-item">
+                        <p>{{name}}</p>
+                    </li>
+                </a>
+            </ul>
+            {{/allWaiters}}
         </div>
-        <div class="instructions">
-            <p class="color">Over Scheduled<span class="green"></span></p>
-            <p class="color">Scheduled<span class="yellow"></span></p>
-            <p class="color">Not Scheduled<span class="red"></span></p>
-        </div>
-    </fieldset>
+    </div>
+    {{!-- <div class="buttons">
+        <button type="submit" class="days-button">
+            Reset Schedule
+        </button>
+        <button type="submit" class="days-button">
+            Delete Waiters
+        </button>
+    </div> --}}
+    <div class="instructions">
+        <p class="color">Over Scheduled<span class="purple"></span></p>
+        <p class="color">Scheduled<span class="green"></span></p>
+        <p class="color">Not Fully Scheduled<span class="yellow"></span></p>
+        <p class="color">Not Scheduled<span class="red"></span></p>
+    </div>
+</div>
 </div>

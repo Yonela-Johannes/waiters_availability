@@ -1,7 +1,7 @@
 <div class="main-container">
-    <fieldset>
-        <legend>Waiter Available</legend>
-        <p>Days Available</p>
+    <div class="wrapper">
+        <div class="title">Waiter Available</div>
+        <p class="sub-title">Days Available</p>
         <table>
             <colgroup>
                 <col span="6" style="">
@@ -11,11 +11,14 @@
                 <th>{{waiter.name}}</th>
             </tr>
             {{!-- first Waiter --}}
-            {{#each days_available}}
-            <td>{{this}}</td>
-            {{/each}}
+            {{#days_available}}
+            <td>{{#each this}}
+                {{this.day}}
+                {{/each}}
+            </td>
+
+            {{/days_available}}
             </tr>
-            {{!-- Second Waiter --}}
         </table>
         <div class="buttons">
             <a href="/schedule/{{waiter.name}}">
@@ -29,9 +32,5 @@
                 </button>
             </a>
         </div>
-        <div class="instructions">
-            <p class="colors">Working<span class="purple"></span></p>
-            <p class="colors">Off<span class="pink"></span></p>
-        </div>
-    </fieldset>
+    </div>
 </div>
