@@ -8,7 +8,7 @@ const WaitersDb = (db) => {
     const getCurrentWeek = () => currentWeek
 
     const storeName = async (name) => {
-        result = await db.any('INSERT INTO waiters (name) VALUES ($1);', [name])
+        const result = await db.any('INSERT INTO waiters (name) VALUES ($1);', [name])
         return [result]
     }
 
@@ -61,6 +61,20 @@ const WaitersDb = (db) => {
         const days = await db.any('SELECT * FROM days;')
         return days
     }
+
+    const deleteWaiters = async () => {
+        await db.any('DELETE FROM waiters')
+    }
+
+    const resetDays = async () => {
+        await db.any('DELETE FROM days_available')
+    }
+
+    const search = (name) => {
+        const rows = `SELECT * FROM waiters WHERE name ILIKE '${name}%'`
+        const result = db.any(rows)
+        return result
+    }
     return {
         getCurrentDate,
         getCurrentWeek,
@@ -71,7 +85,10 @@ const WaitersDb = (db) => {
         getUsers,
         getUser,
         getAvailableDays,
-        storeWaiterAvailabilty
+        storeWaiterAvailabilty,
+        deleteWaiters,
+        resetDays,
+        search
     }
 
 }

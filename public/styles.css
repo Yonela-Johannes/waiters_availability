@@ -14,7 +14,7 @@
     justify-content: center;
     min-height: calc(100vh - 300px);
     overflow: hidden;
-    margin-top: 200px;
+    padding: 160px 0;
 }
 
 header {
@@ -27,6 +27,7 @@ header {
     background-color: crimson;
     min-height: 80px;
     border-bottom: 1px solid rgb(175, 20, 0);
+    z-index: 9999;
 }
 
 .navbar {
@@ -45,22 +46,23 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* min-height: 100vh; */
     padding: 20px;
     background-color: white;
 }
 
 .main-wrapper {
     background: rgb(222, 207, 180);
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding: 40px;
+    border-radius: 8px;
+    min-width: 600px;
 }
 
 input {
     border-radius: 15px;
-    padding: 10px;
-    border: 1px solid rgb(242, 177, 65);
-    outline: 1px solid rgb(134, 22, 22);
+    /* padding: 10px; */
+    /* border: 1px solid rgb(242, 177, 65);
+    outline: 1px solid rgb(134, 22, 22); */
 }
 
 
@@ -70,8 +72,8 @@ input::placeholder {
 }
 
 input:focus {
-    outline: 1px solid rgb(242, 177, 65);
-    border: 1px solid rgb(134, 22, 22);
+    outline: none;
+    border: none;
 }
 
 .errors {
@@ -143,12 +145,21 @@ legend {
 }
 
 .buttons {
+    z-index: 9999;
     background-color: rgb(244, 244, 244);
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+}
+
+.admin-buttons {
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    bottom: 0;
+    margin: 80px 30px;
 }
 
 .days-button {
@@ -162,6 +173,21 @@ legend {
 }
 
 .days-button:hover {
+    background-color: rgb(242, 177, 65);
+    color: rgb(134, 22, 22);
+}
+
+.list-names {
+    cursor: pointer;
+    background-color: rgb(244, 244, 244);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.list-names:hover {
     background-color: rgb(242, 177, 65);
     color: rgb(134, 22, 22);
 }
@@ -387,4 +413,21 @@ ul {
 .list-item:hover {
     background-color: gray;
     color: white;
+}
+
+.list-users {
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.waiter-name {
+    font-size: 16px;
+}
+
+.list-names {
+    background-color: rgb(202, 202, 202);
+    margin: 5px;
 }

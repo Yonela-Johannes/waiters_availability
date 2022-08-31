@@ -19,17 +19,28 @@
                     <span class="w">W</span>
                     <span class="a">A</span>
                 </a>
-                <input placeholder="search waiter" type="text" name="name" />
+                <form action="/search" method="POST">
+                    <div class="search">
+                        <input placeholder="search waiter" type="text" name="name" />
+                        <button class="button search-button" type="submit">Search</button>
+                    </div>
+                </form>
             </div>
             <div class="nav-content">
                 <a href="/weekly-schedule">
                     <h3 class="nav-title">
                         <i class="fa-solid fa-house-user"></i>
-                        Home
+                        {{home}}
                     </h3>
                 </a>
                 <a href="/admin">
                     <h3 class="nav-title">Admin</h3>
+                </a>
+                <a href="/waiters">
+                    <h3 class="nav-title">Waiters</h3>
+                </a>
+                <a href="/">
+                    <img src="/img//waiter.png" class="login-image" />
                 </a>
             </div>
             <div class="navbar">

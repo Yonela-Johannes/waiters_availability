@@ -1,11 +1,11 @@
 <div class="main-container">
     <div class="main-wrapper">
-        <div class="title">Weekly Schedule</div>
+        <p class="title">Search</p>
         <div class="table-container">
             <table>
                 <colgroup>
-                    <col span="4" style="background-color: pink">
-                    <col span="8" style="background-color: rgb(161, 161, 161)">
+                    <col span="6" style="">
+                    <col span="8" style="background-color: pink">
                 </colgroup>
                 <tr>
                     {{#each weekDays}}
@@ -15,13 +15,25 @@
                 <tr>
                     {{#days}}
                     <td>{{#each this}}
-                        <p>{{this.name}}</p>
+                        {{this.name}}
                         {{/each}}
                     </td>
                     {{/days}}
                 </tr>
-                </tr>
             </table>
         </div>
+        <div class="bottom-container">
+            Waiters
+            {{#allWaiters}}
+            <ul class="list">
+                <a href="/waiter/{{name}}">
+                    <li class="list-item">
+                        <p>{{name}}</p>
+                    </li>
+                </a>
+            </ul>
+            {{/allWaiters}}
+        </div>
     </div>
+</div>
 </div>

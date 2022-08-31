@@ -5,7 +5,8 @@ const Routes = (waiter, waitersDb) => {
         const username = waiter.getName()
         const dbName = await waitersDb.getUser(username)
         const existName = waiter.validateDbName(username, dbName)
-        existName === false && username ? await waitersDb.storeName(username) : ''
+        existName === false && username ? await waitersDb.storeName(username) : '';
+        req.session.user = username;
         res.render('login', {
             error: waiter.errorHandler(),
             success: waiter.successHandler(existName, username)
@@ -16,6 +17,7 @@ const Routes = (waiter, waitersDb) => {
         res.render('login')
     }
     const getHomePage = async (req, res) => {
+        console.log(req.body)
         const weekDays = await waitersDb.getDays()
         const waiters = await waitersDb.getUsers()
         let id = waiter.convertObj(waiters)
@@ -31,7 +33,19 @@ const Routes = (waiter, waitersDb) => {
     }
 
     const postHomePage = async (req, res) => {
-        res.render('index')
+        console.log(req.body)
+        const weekDays = await waitersDb.getDays()
+        const waiters = await waitersDb.getUsers()
+        let id = waiter.convertObj(waiters)
+        const days = await waitersDb.getDay(id)
+        res.render('index', {
+            week: waitersDb.getCurrentWeek,
+            nextweek: waitersDb.getCurrentWeek() + 1,
+            date: waitersDb.getCurrentDate,
+            weekDays,
+            days,
+            waiters,
+        })
     }
 
     const postSchedulePage = async (req, res) => {
@@ -39,7 +53,6 @@ const Routes = (waiter, waitersDb) => {
         const { day } = req.body
         waiter.setName(username)
         waiter.setDays(day)
-        const getD = await getDay()
         const getDay = waiter.getDays()
         const days = await waitersDb.getDays()
         const getWaiter = await waitersDb.getUser(username)
@@ -92,8 +105,6 @@ const Routes = (waiter, waitersDb) => {
         const waiters = await waitersDb.getUsers()
         let id = waiter.convertObj(waiters)
         const days = await waitersDb.getDay(id)
-        // console.log(days)
-        // console.log(days)
         res.render('admin', {
             week: waitersDb.getCurrentWeek,
             nextweek: waitersDb.getCurrentWeek() + 1,
@@ -110,6 +121,7 @@ const Routes = (waiter, waitersDb) => {
             day,
         })
     }
+
     const getWaiterPage = async (req, res) => {
         const { username } = req.params
         const waiter = await waitersDb.getUser(username)
@@ -128,6 +140,74 @@ const Routes = (waiter, waitersDb) => {
         })
     }
 
+
+    const allWaitersPage = async (req, res) => {
+        const weekDays = await waitersDb.getDays()
+        const waiters = await waitersDb.getUsers()
+        let id = waiter.convertObj(waiters)
+        const days = await waitersDb.getDay(id)
+        res.render('waiters', {
+            week: waitersDb.getCurrentWeek,
+            nextweek: waitersDb.getCurrentWeek() + 1,
+            date: waitersDb.getCurrentDate,
+            weekDays,
+            days,
+            waiters,
+        })
+    }
+    const deleteWaiters = async (req, res) => {
+        const { username } = req.params
+        await waitersDb.deleteWaiters()
+        const { day } = req.body
+        waiter.setName(username)
+        waiter.setDays(day)
+        res.render('admin', {
+            error: waiter.errorHandler,
+            success: waiter.successHandler,
+        })
+    }
+    const resetDays = async (req, res) => {
+        const { username } = req.params
+        await waitersDb.resetDays()
+        const { day } = req.body
+        waiter.setName(username)
+        waiter.setDays(day)
+        res.render('admin', {
+            error: waiter.errorHandler,
+            success: waiter.successHandler,
+        })
+    }
+
+    const postSearchWaiter = async (req, res) => {
+        const { name } = req.body
+        const searchedUser = await waitersDb.search(name)
+        res.render('search', {
+            error: waiter.errorHandler,
+            success: waiter.successHandler,
+        })
+    }
+
+    const getSearchWaiter = async (req, res) => {
+        const { name } = req.body
+        const searchedUser = await waitersDb.search(name)
+        const weekDays = await waitersDb.getDays()
+        const result = await waitersDb.getAvailableDays()
+        const allWaiters = await waitersDb.getUsers()
+        const waiters = await waitersDb.getUsers()
+        let id = waiter.convertObj(waiters)
+        const days = await waitersDb.getDay(id)
+        res.render('search', {
+            week: waitersDb.getCurrentWeek,
+            nextweek: waitersDb.getCurrentWeek() + 1,
+            date: waitersDb.getCurrentDate,
+            days,
+            weekDays,
+            waiters,
+            result,
+            allWaiters,
+            waiters
+        })
+    }
     return {
         postLoginPage,
         getLoginPage,
@@ -139,6 +219,11 @@ const Routes = (waiter, waitersDb) => {
         getWaiterPage,
         postAdminPage,
         getAdminPage,
+        allWaitersPage,
+        deleteWaiters,
+        resetDays,
+        getSearchWaiter,
+        postSearchWaiter
     }
 
 }

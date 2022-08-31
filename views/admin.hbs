@@ -35,14 +35,18 @@
             {{/allWaiters}}
         </div>
     </div>
-    {{!-- <div class="buttons">
-        <button type="submit" class="days-button">
-            Reset Schedule
-        </button>
-        <button type="submit" class="days-button">
-            Delete Waiters
-        </button>
-    </div> --}}
+    <div class="buttons admin-buttons">
+        <form action="reset" method="POST">
+            <button type="submit" class="days-button">
+                Reset Schedule
+            </button>
+        </form>
+        <form action="delete" method="POST">
+            <button type="submit" class="days-button">
+                Delete Waiters
+            </button>
+        </form>
+    </div>
     <div class="instructions">
         <p class="color">Over Scheduled<span class="purple"></span></p>
         <p class="color">Scheduled<span class="green"></span></p>

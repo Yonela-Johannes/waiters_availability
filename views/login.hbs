@@ -8,18 +8,20 @@
         <label class="errors success">{{success}}</label>
         <div class="table-container">
             <form action='/' method="POST">
-                <table>
-                    <div class="input-container login-input">
-                        <label class="name-label" for="name">Name:</label>
-                        <input class='name' type="text" name='name' placeholder="Enter your name" />
+                <form action="/weekly-schedule" method="POST">
+                    <table>
+                        <div class="input-container login-input">
+                            <label class="name-label" for="name">Name:</label>
+                            <input class='name' type="text" name='name' placeholder="Enter your name" value="" />
+                        </div>
+                    </table>
+                    <div class="input-container buttons login">
+                        <button type="submit" class="days-button user-btn submit">
+                            Login
+                        </button>
+                        <label class="name-label" for="name">Proceed to home page</label>
                     </div>
-                </table>
-                <div class="input-container buttons login">
-                    <button type="submit" class="days-button user-btn">
-                        Login
-                    </button>
-                    <label class="name-label" for="name">Proceed to home page</label>
-                </div>
+                </form>
             </form>
         </div>
         <div class="instructions">

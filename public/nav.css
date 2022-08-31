@@ -77,3 +77,24 @@ a {
     font-weight: bold;
     color: rgb(134, 22, 22);
 }
+
+.search {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid rgb(242, 177, 65);
+    outline: 1px solid rgb(134, 22, 22);
+}
+
+.search-button {
+    color: rgb(185, 185, 185);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    background: white;
+    transition: .2s ease
+}
+
+.search-button:hover {
+    color: rgb(134, 22, 22);
+}
