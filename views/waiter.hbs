@@ -6,11 +6,13 @@
             <p class="waiter-name">{{waiter.name}}</p>
             <p class="delete-waiter">Delete</p>
         </div>
-        {{#days_available}}
-        <p>{{#each this}}
-            {{this.day}}
-            {{/each}}
-        </p>
+        <div class="waiter-days">
+            {{#days_available}}
+            <p>{{#each this}}
+                {{this.day}}
+                {{/each}}
+            </p>
+        </div>
         {{/days_available}}
         <div class="buttons">
             <a href="/schedule/{{waiter.name}}">

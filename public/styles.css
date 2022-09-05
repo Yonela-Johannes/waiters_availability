@@ -506,3 +506,7 @@ ul {
     background-color: purple;
     border: .2px solid white;
 }
+
+.waiter-days {
+    margin: 0 16px;
+}
