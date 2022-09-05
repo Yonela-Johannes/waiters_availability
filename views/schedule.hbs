@@ -1,10 +1,10 @@
 <div class="main-container">
-    <fieldset>
-        <legend>Waiter's Schedule</legend>
+    <div class="main-wrapper">
+        <h2 class="title">Waiter's Schedule</h2>
         <label class="errors error">{{error}}</label>
         <label class="errors success">{{success}}</label>
         <form action="/schedule/{{username}}" method="POST">
-            <p class="name username">{{username}}</p>
+            <p class="username">{{username}}</p>
             <div class="bottom-container">
                 <div class="days-title">Select Days Available:
                 </div>
@@ -32,6 +32,6 @@
                 back
             </button>
         </a>
+    </div>
 </div>
-</fieldset>
 </div>

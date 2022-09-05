@@ -2,26 +2,19 @@
     <div class="main-wrapper">
         <div class="title">Weekly Schedule</div>
         <div class="table-container">
-            <table>
-                <colgroup>
-                    <col span="4" style="background-color: pink">
-                    <col span="8" style="background-color: rgb(161, 161, 161)">
-                </colgroup>
-                <tr>
-                    {{#each weekDays}}
-                    <th>{{day}}</th>
+            <tr>
+                {{#each weekDays}}
+                <th>{{day}}</th>
+                {{/each}}
+            </tr>
+            <tr>
+                {{#days}}
+                <td>{{#each this}}
+                    <p>{{this.name}}</p>
                     {{/each}}
-                </tr>
-                <tr>
-                    {{#days}}
-                    <td>{{#each this}}
-                        <p>{{this.name}}</p>
-                        {{/each}}
-                    </td>
-                    {{/days}}
-                </tr>
-                </tr>
-            </table>
+                </td>
+                {{/days}}
+            </tr>
         </div>
     </div>
 </div>

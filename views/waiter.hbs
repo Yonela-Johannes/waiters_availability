@@ -1,28 +1,20 @@
 <div class="main-container">
     <div class="wrapper">
         <div class="title">Waiter Available</div>
-        <p class="sub-title">Days Available</p>
-        <table>
-            <colgroup>
-                <col span="6" style="">
-                <col span="8" style="background-color: pink">
-            </colgroup>
-            <tr>
-                <th>{{waiter.name}}</th>
-            </tr>
-            {{!-- first Waiter --}}
-            {{#days_available}}
-            <td>{{#each this}}
-                {{this.day}}
-                {{/each}}
-            </td>
-
-            {{/days_available}}
-            </tr>
-        </table>
+        <p class="subtitle">Days Available</p>
+        <div class="waiter-name-container">
+            <p class="waiter-name">{{waiter.name}}</p>
+            <p class="delete-waiter">Delete</p>
+        </div>
+        {{#days_available}}
+        <p>{{#each this}}
+            {{this.day}}
+            {{/each}}
+        </p>
+        {{/days_available}}
         <div class="buttons">
             <a href="/schedule/{{waiter.name}}">
-                <button class="days-button user-btn">
+                <button class="days-button user-btn schedule-days-btn">
                     Schedule Days
                 </button>
             </a>

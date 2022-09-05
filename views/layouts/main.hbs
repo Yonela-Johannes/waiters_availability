@@ -12,57 +12,49 @@
 </head>
 
 <body>
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <a href="/weekly-schedule">
-                    <span class="w">W</span>
-                    <span class="a">A</span>
-                </a>
-                <form action="/search" method="POST">
-                    <div class="search">
-                        <input placeholder="search waiter" type="text" name="name" />
-                        <button class="button search-button" type="submit">Search</button>
-                    </div>
-                </form>
-            </div>
-            <div class="nav-content">
-                <a href="/weekly-schedule">
-                    <h3 class="nav-title">
-                        <i class="fa-solid fa-house-user"></i>
-                        {{home}}
-                    </h3>
-                </a>
-                <a href="/admin">
-                    <h3 class="nav-title">Admin</h3>
-                </a>
-                <a href="/waiters">
-                    <h3 class="nav-title">Waiters</h3>
-                </a>
-                <a href="/">
-                    <img src="/img//waiter.png" class="login-image" />
-                </a>
-            </div>
+    <div class="bg">
+        <header>
             <div class="navbar">
-                <div>
-                    <i class="fa-solid fa-house-user"></i>
-                    <p class="week">Current Week: {{week}}</p>
-                    <p class="week">Next Week: {{nextweek}}</p>
-                    <p class="week">Time: {{date}}</p>
+                <div class="logo">
+                    <a href="/weekly-schedule">
+                        <span class="w">W</span>
+                        <span class="a">A</span>
+                    </a>
+                    <form action="/search" method="POST">
+                        <div class="search">
+                            <input class="search-input" placeholder="search waiter" type="text" name="name" />
+                            <button class="button search-button" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="nav-content">
+                    <a href="/weekly-schedule">
+                        <h3 class="nav-title">Schedule</h3>
+                    </a>
+                    <a href="/admin">
+                        <h3 class="nav-title">Admin</h3>
+                    </a>
+                    <a href="/waiters">
+                        <h3 class="nav-title">Waiters</h3>
+                    </a>
+                    <a href="/">
+                        <h3 class="nav-title">logout</h3>
+                    </a>
                 </div>
             </div>
+        </header>
+        <div class="container">
+            {{{body}}}
         </div>
-    </header>
-    <div class="container">
-        {{{body}}}
-    </div>
-    <footer>
-        <div>
+        <footer>
             <div>
                 <p>Waiter Availibity App</p>
             </div>
-        </div>
-    </footer>
+            <div>
+                <p>Project Codex 2022</p>
+            </div>
+        </footer>
+    </div>
     <script src="../../error.js"></script>
 
 </html>
