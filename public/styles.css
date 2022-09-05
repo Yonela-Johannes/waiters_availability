@@ -467,6 +467,8 @@ ul {
 .delete-waiter:hover {
     opacity: 1;
     color: white;
+    background-color: red;
+    border: .2px solid white;
 }
 
 .schedule-days-btn {
@@ -484,5 +486,23 @@ ul {
     opacity: 1;
     color: white;
     background-color: green;
+    border: .2px solid white;
+}
+
+.reset-waiters {
+    color: white;
+    cursor: pointer;
+    background-color: purple;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: .6;
+    transition: .2s ease;
+    border: .2px solid purple;
+}
+
+.reset-waiters:hover {
+    opacity: 1;
+    color: white;
+    background-color: purple;
     border: .2px solid white;
 }
