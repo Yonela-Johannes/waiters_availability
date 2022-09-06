@@ -1,24 +1,16 @@
 <div class="main-container">
     <div class="main-wrapper">
         <h2 class="title">Waiters Available</h2>
-        <div class="table-container">
-            <tr>
-                {{#each weekDays}}
-                <th>{{day}}</th>
-                {{/each}}
-            </tr>
-            <tr>
-                {{#days}}
-                <td>{{#each this}}
-                    {{this.name}}
-                    {{/each}}
-                </td>
-                {{/days}}
-            </tr>
+        <div class="schedule-days-container">
+            {{#each days}}
+            <div class="user">
+                <span class="day {{separator this}}">{{@key}}</span> {{this}}
+            </div>
+            {{/each}}
         </div>
         <div class="bottom-container">
             Waiters
-            {{#allWaiters}}
+            {{#waiters}}
             <ul class="list">
                 <a href="/waiter/{{name}}">
                     <li class="list-item">
@@ -26,7 +18,7 @@
                     </li>
                 </a>
             </ul>
-            {{/allWaiters}}
+            {{/waiters}}
         </div>
     </div>
     <div class="buttons admin-buttons">
@@ -35,7 +27,7 @@
                 Reset Schedule
             </button>
         </form>
-        <form action="reset" method="POST">
+        <form action="adduser" method="POST">
             <button type="submit" class="days-button schedule-days-btn">
                 Add Waiter
             </button>

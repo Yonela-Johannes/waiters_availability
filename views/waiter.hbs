@@ -2,10 +2,12 @@
     <div class="wrapper">
         <div class="title">Waiter Available</div>
         <p class="subtitle">Days Available</p>
-        <div class="waiter-name-container">
-            <p class="waiter-name">{{waiter.name}}</p>
-            <p class="delete-waiter">Delete</p>
-        </div>
+        <form action='/deleteuser/{{waiter.name}}' method="POST">
+            <div class="waiter-name-container">
+                <p class="waiter-name">{{waiter.name}}</p>
+                <button type='submit' class="delete-waiter">Delete</p>
+            </div>
+        </form>
         <div class="waiter-days">
             {{#days_available}}
             <p>{{#each this}}

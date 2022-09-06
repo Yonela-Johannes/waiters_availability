@@ -61,10 +61,10 @@ app.get('/waiter/:username', routes.getWaiterPage)
 app.post('/delete', routes.deleteWaiters)
 app.post('/reset', routes.resetDays)
 app.post('/delete', routes.deleteWaiters)
-app.post('/search', routes.postSearchWaiter)
-app.get('/search', routes.getSearchWaiter)
-
-
+app.post('/deleteuser/:name', routes.deleteUser)
+app.post('/adduser', (req, res) => {
+    res.redirect('/')
+})
 
 const port = process.env.PORT || 5000
 // displaying server in localhost

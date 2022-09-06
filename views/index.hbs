@@ -1,20 +1,12 @@
 <div class="main-container">
     <div class="main-wrapper">
         <div class="title">Weekly Schedule</div>
-        <div class="table-container">
-            <tr>
-                {{#each weekDays}}
-                <th>{{day}}</th>
-                {{/each}}
-            </tr>
-            <tr>
-                {{#days}}
-                <td>{{#each this}}
-                    <p>{{this.name}}</p>
-                    {{/each}}
-                </td>
-                {{/days}}
-            </tr>
+        <div class="schedule-days-container">
+            {{#each days}}
+            <div class="user">
+                <span class="day {{separator this}}">{{@key}}</span> {{this}}
+            </div>
+            {{/each}}
         </div>
     </div>
 </div>

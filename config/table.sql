@@ -13,3 +13,13 @@ CREATE TABLE days_available(
     FOREIGN KEY (waiter_id) REFERENCES waiters(ID) ON DELETE CASCADE,
     FOREIGN KEY (day_available) REFERENCES days(ID) ON DELETE CASCADE
 );
+
+
+INSERT INTO days (day) VALUES 
+('Monday'),
+('Tuesday'),
+('Wednesday'),
+('Thursday'),
+('Friday'),
+('Saturday'),
+('Sunday');
