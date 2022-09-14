@@ -4,9 +4,21 @@
         <div class="schedule-days-container">
             {{#each days}}
             <div class="user">
-                <span class="day {{separator this}}">{{@key}}</span> {{this}}
+                <span class="day {{separator this}}">{{@key}}
+                </span>
+                <span class="{{separator this}} users ">
+                    {{#each .}}
+                    {{this}}
+                    {{/each}}
+                </span>
             </div>
             {{/each}}
+        </div>
+        <div class="instructions">
+            <p class="color">Over Scheduled<span class="purple"></span></p>
+            <p class="color">Scheduled<span class="green"></span></p>
+            <p class="color">Not Fully Scheduled<span class="yellow"></span></p>
+            <p class="color">Not Scheduled<span class="red"></span></p>
         </div>
     </div>
 </div>

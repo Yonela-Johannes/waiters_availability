@@ -52,7 +52,6 @@ header {
 .main-wrapper {
     background-color: rgb(94, 94, 94);
     padding: 40px;
-    border-radius: 8px;
     min-width: 600px;
 }
 
@@ -135,6 +134,7 @@ header {
 
 .days-button {
     font-weight: bold;
+    color: rgb(153, 153, 153);
     padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -271,20 +271,23 @@ header {
     flex-direction: column;
     justify-content: flex-end;
     align-items: end;
-    padding: 12px 0;
+    padding: 10px;
+    background-color: rgb(105, 105, 105);
 }
 
 .color {
-    color: #323330;
     display: flex;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 12px;
     align-items: center;
     justify-content: space-between;
-    width: 120px;
-    cursor: pointer;
-    margin: 5px 0;
-    font-weight: bold;
+}
+
+.instructions > .color {
+    color: #1b1b1b;
+}
+
+.color > span {
+    margin: 0 5px;
 }
 
 .green {
@@ -308,6 +311,12 @@ header {
     background: red;
     border-radius: 50%;
 }
+.purple {
+    width: 16px;
+    height: 16px;
+    background: purple;
+    border-radius: 50%;
+}
 
 .colors {
     color: rgb(40, 40, 40);
@@ -321,19 +330,6 @@ header {
     margin: 5px 0;
 }
 
-.purple {
-    width: 16px;
-    height: 16px;
-    background: purple;
-    border-radius: 50%;
-}
-
-.pink {
-    width: 16px;
-    height: 16px;
-    background: pink;
-    border-radius: 50%;
-}
 
 footer {
     position: fixed;
@@ -423,15 +419,15 @@ ul {
 
 .main-wrapper p,
 .name-label {
-    font-size: 25px;
-    color: #323330;
+    font-size: 18px;
+    color: #bdbdbd;
     /* font-weight: bold; */
     margin: 10px 0;
 }
 
 .title {
     font-size: 50px;
-    color: #323330;
+    color: #272727;
     border-bottom: .2px solid #323330;
     padding-bottom: 20px;
 }
@@ -512,31 +508,43 @@ ul {
 }
 
 .schedule-days-container {
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    border: .2px solid #bda508;
 }
 
 .user {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    border-bottom: .2px solid gray;
+    background-color: #f0db4f;
+    /* border-bottom: .2px solid rgb(53, 53, 53); */
+}
+
+.users {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.users > {
+    font-size: 13px;
+    font-weight: normal;
+    padding: 5px;
 }
 
 .day {
-    font-size: 15px;
+    font-size: 16px;
     color: black;
     padding: 10px;
+    font-weight: bold;
 }
 
 .green_day,
 .yellow_day,
 .red_day,
 .purple_day {
-    width: 100%;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
+    width: 100px;
+    color: rgb(238, 238, 238);
+    border-bottom: .2px solid black;
 }
 
 .green_day {
@@ -544,7 +552,8 @@ ul {
 }
 
 .yellow_day {
-    background: yellow;
+    color: black;
+    background: #f0db4f;
 }
 
 .red_day {
