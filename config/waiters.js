@@ -5,12 +5,13 @@ const WaitersDb = (db) => {
     }
 
     const storeWaiterAvailabilty = async (nameId, dayId) => {
+        console.log('THIS IS THE ID OUTSIDE!!!', dayId)
         let result = ''
         if (typeof dayId == 'object') {
             for (let x = 0; x < dayId.length; x++) {
                 result = await db.any('INSERT INTO days_available (waiter_id, day_available) VALUES ($1, $2);', [nameId, dayId[x]])
             }
-        } else if (typeof dayId == 'number') {
+        } else {
             result = await db.any('INSERT INTO days_available (waiter_id, day_available) VALUES ($1, $2);', [nameId, dayId])
         }
         return result
@@ -50,7 +51,6 @@ const WaitersDb = (db) => {
         return mainResult
     }
     const getWaitersByDay = async (day) => {
-
         return getDaysByName = await db.any('SELECT * FROM days_available INNER JOIN waiters ON waiter_id = waiters.id INNER JOIN days ON day_available = days.id WHERE day = $1', [day])
 
     }
