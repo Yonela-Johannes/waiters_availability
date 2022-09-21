@@ -1,0 +1,5 @@
+        req.flash('success', 'you have successfully scheduled your days.')
+        req.flash('error', 'schedule your days.')
+
+error: message.error
+success: message.success

@@ -21,12 +21,29 @@
                         {{/each}}
                     </div>
                 </div>
-            </div>
-            <div class="buttons">
-                <button type="submit" class="days-button">
-                    Submit
-                </button>
+                <div class="buttons logout schedule-btns">
+                    <div>
+                        <button title="Schedule your days" type="submit" class="days-button user-btn exists">
+                            Submit
+                        </button>
+                    </div>
+                    <a href="/">
+                        <div title="Sign Out" class="days-button user-btn exits">
+                            Sign Out
+                        </div>
+                    </a>
         </form>
     </div>
+    <form action="/schedule/clear_days/{{username}}" method="POST">
+        <div class="buttons logout schedule-btns">
+            <div>
+                <button title="Schedule your days" type="submit" class="days-button user-btn exists">
+                    Reset Days
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
 </div>
 </div>

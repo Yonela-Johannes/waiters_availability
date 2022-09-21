@@ -10,12 +10,12 @@
 }
 
 .container {
+    display: flex;
     align-items: center;
     justify-content: center;
-    /* min-height: calc(100vh - 100px); */
+    min-height: 100vh;
     overflow: hidden;
-    padding: 160px 0;
-    background-color: #f0db4f;
+    background-color: #ffffff;
 }
 
 header {
@@ -41,6 +41,11 @@ header {
     justify-content: space-between;
 }
 
+.signin-image{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
 .main-container {
     display: flex;
     align-items: center;
@@ -54,7 +59,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(94, 94, 94);
+    /* background-color: rgb(94, 94, 94); */
     padding: 40px;
     min-width: 600px;
 }
@@ -113,7 +118,8 @@ header {
 }
 
 .name-label {
-    color: gray;
+    color: rgb(63, 63, 63);
+    margin: 10px 0 10px 15px;
 }
 
 .days-title {
@@ -125,20 +131,21 @@ header {
     padding: 10px;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .admin-buttons {
+    border-top: .2px solid  #323330;
     position: fixed;
     z-index: 99999;
     left: 0;
+    right: 0;
     bottom: 0;
-    margin: 80px 30px;
 }
 
 .days-button {
     font-weight: bold;
-    color: rgb(153, 153, 153);
+    color:  #323330;
     padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -150,7 +157,7 @@ header {
 }
 
 .days-button:hover {
-    background-color: rgb(0, 0, 0);
+    background-color:  #323330;
     color: white;
 }
 
@@ -267,59 +274,49 @@ header {
 }
 
 .instructions {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 100px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: end;
-    padding: 10px;
-    background-color: rgb(105, 105, 105);
+    justify-content: center;
+    align-items: center;
 }
-
-.color {
+.inner-buttons{
     display: flex;
-    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+}
+p.color {
+    display: flex;
+    font-size: 11px;
     align-items: center;
     justify-content: space-between;
 }
 
 .instructions > .color {
     color: #1b1b1b;
+        margin: 0 20px;
 }
 
 .color > span {
     margin: 0 5px;
 }
 
-.green {
+.green, .purple, .yellow, .red{
     width: 16px;
     height: 16px;
-    background: green;
-    color: green;
     border-radius: 50%;
+}
+.green {
+    background: green;
 }
 
 .yellow {
-    width: 16px;
-    height: 16px;
     background: yellow;
-    border-radius: 50%;
 }
 
 .red {
-    width: 16px;
-    height: 16px;
     background: red;
-    border-radius: 50%;
 }
 .purple {
-    width: 16px;
-    height: 16px;
     background: purple;
-    border-radius: 50%;
 }
 
 .colors {
@@ -421,14 +418,6 @@ ul {
     justify-self: flex-end;
 }
 
-.main-wrapper p,
-.name-label {
-    font-size: 18px;
-    color: #bdbdbd;
-    /* font-weight: bold; */
-    margin: 10px 0;
-}
-
 .title {
     font-size: 50px;
     color: #272727;
@@ -453,34 +442,22 @@ ul {
     font-weight: bold;
 }
 
-.delete-waiter {
-    cursor: pointer;
-    color: white;
-    background-color: red;
-    padding: 5px 10px;
-    border-radius: 5px;
-    opacity: .6;
-    border: .2px solid red;
-    transition: .2s ease;
-}
-
 .delete-waiter:hover {
     opacity: 1;
     color: white;
     background-color: red;
-    border: .2px solid white;
+    border: .2px solid red;
 }
 
-.schedule-days-btn {
+.schedule-days-btn, .reset-waiters, .delete-waiter {
     color: white;
     cursor: pointer;
-    background-color: green;
+    background-color:  #323330;
     padding: 5px 10px;
     border-radius: 5px;
-    opacity: .6;
+    /* opacity: .6; */
     transition: .2s ease;
-    border: .2px solid green;
-    width: 100%;
+    border: .2px solid  #323330;
     align-self: center;
 }
 
@@ -488,32 +465,18 @@ ul {
     opacity: 1;
     color: white;
     background-color: green;
-    border: .2px solid white;
-}
-
-.reset-waiters {
-    color: white;
-    cursor: pointer;
-    background-color: purple;
-    padding: 5px 10px;
-    border-radius: 5px;
-    opacity: .6;
-    transition: .2s ease;
-    border: .2px solid purple;
+    border: .2px solid green;
 }
 
 .reset-waiters:hover {
     opacity: 1;
     color: white;
     background-color: purple;
-    border: .2px solid rgb(65, 65, 65);
+    border: .2px solid purple;
 }
 
 .waiter-days {
     margin: 0 16px;
-}
-
-.schedule-days-container {
 }
 
 .user {
@@ -531,15 +494,14 @@ ul {
     justify-content: center;
 }
 
-.users > {
-    font-size: 13px;
+span.users {
+    font-size: 16px;
     font-weight: normal;
     padding: 5px;
 }
 
-.day {
+span.day {
     font-size: 16px;
-    color: black;
     padding: 10px;
     font-weight: bold;
 }
@@ -548,7 +510,7 @@ ul {
 .yellow_day,
 .red_day,
 .purple_day {
-    width: 100px;
+    width: 110px;
     color: rgb(238, 238, 238);
     border-bottom: .2px solid black;
 }
@@ -568,4 +530,27 @@ ul {
 
 .purple_day {
     background: purple;
+}
+
+.logout {
+    /* position: absolute; */
+    width: min-content;
+    text-align: center;
+}
+
+.exits{
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.schedule-btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: start;
+}
+
+.schedule{
+    color: #323330;
 }

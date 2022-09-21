@@ -70,6 +70,11 @@ const WaitersDb = (db) => {
     const deleteWaiter = async (name) => {
         return await db.any('DELETE FROM waiters WHERE name = $1;', [name])
     }
+
+    const clearWaiterDays = async (id) => {
+        const result = await db.any('DELETE FROM days_available WHERE waiter_id = $1;', [id])
+        return result
+    }
     return {
         getDay,
         getDays,
@@ -82,7 +87,8 @@ const WaitersDb = (db) => {
         storeWaiterAvailabilty,
         deleteWaiters,
         resetDays,
-        deleteWaiter
+        deleteWaiter,
+        clearWaiterDays
     }
 
 }
