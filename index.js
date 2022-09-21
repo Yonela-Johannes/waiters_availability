@@ -69,7 +69,7 @@ app.post('/delete', routes.deleteWaiters)
 app.post('/reset', routes.resetDays)
 app.post('/delete', routes.deleteWaiters)
 app.post('/deleteuser/:name', routes.deleteUser)
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 4000
 // displaying server in localhost
 app.listen(port, () => {
     console.log('Your app is running on port: ', port)
