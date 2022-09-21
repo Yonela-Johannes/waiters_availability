@@ -26,11 +26,11 @@ const WaitersDb = (db) => {
         return result
     }
     const getAvailableDays = async () => {
-        const tables = await db.many('SELECT * FROM days_available LEFT JOIN days ON days.id = days_available.day_available;')
+        const tables = await db.manyOrNone('SELECT * FROM days_available LEFT JOIN days ON days.id = days_available.day_available;')
         return tables
     }
     const getWaiters = async () => {
-        const result = await db.many('SELECT waiter_id, name, day FROM days_available INNER JOIN waiters ON waiter_id = waiters.id INNER JOIN days ON day_available = days.id GROUP BY waiter_id, name, days.day;')
+        const result = await db.manyOrNone('SELECT waiter_id, name, day FROM days_available INNER JOIN waiters ON waiter_id = waiters.id INNER JOIN days ON day_available = days.id GROUP BY waiter_id, name, days.day;')
         return result
     }
     const getDay = async (id) => {
@@ -59,7 +59,7 @@ const WaitersDb = (db) => {
     }
 
     const deleteWaiters = async () => {
-        await db.manyOrNone('DELETE FROM waiters;')
+        await db.any('DELETE FROM waiters;')
     }
 
     const resetDays = async () => {

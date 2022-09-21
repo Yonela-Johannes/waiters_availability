@@ -28,7 +28,7 @@ describe('Registration Test', () => {
         })
     });
     describe("Schedule One Day", () => {
-        it('should schedule waiter availabity[name & day(s)]', async () => {
+        it('should schedule waiter availabity[name & day(s)', async () => {
             const username = 'Luks'
             const day = 2
             await waitersDb.storeName(username)
@@ -65,7 +65,7 @@ describe('Registration Test', () => {
         })
     })
     describe("Delete Waiters", () => {
-        it('should delete all names and available days in database]', async () => {
+        it('should delete all names and available days in database', async () => {
             let username = 'Yonela'
             let day = [1, 2, 3, 4]
             await waitersDb.storeName(username)
@@ -85,7 +85,7 @@ describe('Registration Test', () => {
         })
     });
     describe("Delete All Days", () => {
-        it('should delete all days in database]', async () => {
+        it('should delete all days in database', async () => {
             const username = 'Luks'
             const day = [1, 2, 3, 4, 5, 6]
             await waitersDb.storeName(username)
