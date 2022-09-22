@@ -24,7 +24,7 @@ const Routes = (waiter, waitersDb) => {
         const existName = waiter.validateDbName(username, dbName)
         existName === false && username ? await waitersDb.storeName(username) : '';
         const user = req.session.user = username;
-        res.render('login', {
+        res.render('addWaiter', {
             error: waiter.errorHandler(),
             success: waiter.successHandler(existName, username)
         })
