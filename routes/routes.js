@@ -47,11 +47,11 @@ const Routes = (waiter, waitersDb) => {
                 separator: function (user) {
                     let working = ''
                     if (user.length === 0) {
-                        working = 'red_day'
+                        working = 'green_day'
                     } else if (user.length >= 1 && user.length <= 2) {
                         working = 'yellow_day'
                     } else if (user.length === 3) {
-                        working = 'green_day'
+                        working = 'red_day'
                     } else if (user.length > 3) {
                         working = 'purple_day'
                     }
@@ -155,11 +155,11 @@ const Routes = (waiter, waitersDb) => {
                 separator: function (user) {
                     let working = ''
                     if (user.length === 0) {
-                        working = 'red_day'
+                        working = 'green_day'
                     } else if (user.length >= 1 && user.length <= 2) {
                         working = 'yellow_day'
                     } else if (user.length === 3) {
-                        working = 'green_day'
+                        working = 'red_day'
                     } else if (user.length > 3) {
                         working = 'purple_day'
                     }
