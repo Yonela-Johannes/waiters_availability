@@ -40,7 +40,6 @@ const Waiter = () => {
         }
     }
 
-
     const validateDbName = (inputName, dbName) => inputName == dbName?.name
     const getName = () => typeof username === 'string' && username !== '' ? username : ''
     const getDays = () => days !== undefined && username !== '' && typeof username === 'string' ? days : ''

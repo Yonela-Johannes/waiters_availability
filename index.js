@@ -56,19 +56,22 @@ app.post('/add-waiter', routes.postAddWaiterPage)
 app.get('/add-waiter', routes.getAddWaiterPage)
 app.get('/weekly-schedule', routes.getHomePage)
 app.post('/weekly-schedule', routes.postHomePage)
-app.post('/schedule/:username', routes.postSchedulePage)
-app.get('/schedule/:username', routes.getSchedulePage)
+app.post('/waiter/:username', routes.postSchedulePage)
+app.get('/waiter/:username', routes.getSchedulePage)
 app.post('/schedule/clear_days/:username', routes.clearSchedulePage)
 app.get('/schedule/clear_days/:username', (req, res) => res.redirect('/'))
 app.post('/admin', routes.postAdminPage)
 app.get('/admin', routes.getAdminPage)
 app.get('/waiters', routes.allWaitersPage)
-app.post('/waiter/:username', routes.postWaiterPage)
-app.get('/waiter/:username', routes.getWaiterPage)
+
+
+app.post('/waiter_days/:username', routes.postWaiterPage)
+app.get('/waiter_days/:username', routes.getWaiterPage)
+app.get('/days', routes.getAllDays)
 app.post('/delete', routes.deleteWaiters)
 app.post('/reset', routes.resetDays)
 app.post('/deleteuser/:name', routes.deleteUser)
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8000
 // displaying server in localhost
 app.listen(port, () => {
     console.log('Your app is running on port: ', port)

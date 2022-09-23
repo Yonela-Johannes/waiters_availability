@@ -46,14 +46,12 @@ const Routes = (waiter, waitersDb) => {
             helpers: {
                 separator: function (user) {
                     let working = ''
-                    if (user.length === 0) {
-                        working = 'green_day'
-                    } else if (user.length >= 1 && user.length <= 2) {
+                    if (user.length <= 2) {
                         working = 'yellow_day'
                     } else if (user.length === 3) {
-                        working = 'red_day'
+                        working = 'green_day'
                     } else if (user.length > 3) {
-                        working = 'purple_day'
+                        working = 'red_day'
                     }
                     return working
                 },
@@ -75,27 +73,68 @@ const Routes = (waiter, waitersDb) => {
             waiters,
         })
     }
+    const getSchedulePage = async (req, res) => {
+        const { username } = req.params
+        const days = await waitersDb.getDays()
+        const waiter = await waitersDb.getUser(username)
+        let days_available = []
+        if (!!waiter) {
+            const { id } = waiter
+            days_available = await waitersDb.getDay(id)
+        }
+
+        const [getAvailableDays] = days_available?.map(days => days)
+        const allDays = (getAvailableDays || [])?.map(days => days.day)
+        console.log(allDays)
+        const success = req.flash()
+        res.render('schedule', {
+            username,
+            days_available,
+            days,
+            helpers: {
+                separator: function (daysSep) {
+                    console.log(daysSep)
+                    console.log(allDays.includes(daysSep))
+                    let isChecked = ''
+                    if (allDays.includes(daysSep)) {
+                        isChecked = 'Checked'
+                    }
+                    console.log(isChecked)
+                    return isChecked
+                },
+            },
+            waiter: username,
+            success: success.success,
+        })
+    }
 
     const postSchedulePage = async (req, res) => {
         const { username } = req.params
         const { day } = req.body
         waiter.setName(username)
         waiter.setDays(day)
+        const name = waiter.getName()
         const getDay = waiter.getDays()
+        const dbName = await waitersDb.getUser(name)
         const days = await waitersDb.getDays()
-        const getWaiter = await waitersDb.getUser(username)
-        const { id } = getWaiter
-        getDay !== '' ? await waitersDb.storeWaiterAvailabilty(id, getDay) : ''
-        const dbName = await waitersDb.getUser(username)
-        waiter.validateDbName(username, dbName)
+        const existName = waiter.validateDbName(name, dbName)
+        existName === false && username ? await waitersDb.storeName(name) : '';
+        const waiterDetails = await waitersDb.getUser(name)
+        let days_available = ''
+        if (!!waiterDetails) {
+            const { id } = waiterDetails
+            days_available = await waitersDb.getDay(id)
+            console.log(id)
+            console.log(days)
+            getDay !== '' ? await waitersDb.storeWaiterAvailabilty(id, getDay) : ''
+        }
         req.flash('success', 'you have successfully scheduled your days.')
         req.flash('error', 'schedule your days.')
         res.render('schedule', {
             username,
             days,
-            waiter,
-            error: waiter.errorHandler(getDay, username),
-            success: waiter.successHandler('', username),
+            error: waiter.errorHandler(getDay, name),
+            success: waiter.successHandler('', name),
         })
     }
 
@@ -113,19 +152,31 @@ const Routes = (waiter, waitersDb) => {
         })
     }
 
-    const getSchedulePage = async (req, res) => {
-        const { username } = req.params
-        const days = await waitersDb.getDays()
-        const waiter = await waitersDb.getUser(username)
-        const { id } = waiter
-        const days_available = await waitersDb.getDay(id)
-        const success = req.flash()
-        res.render('schedule', {
-            username,
-            days_available,
-            days,
-            waiter,
-            success: success.success,
+    const getAllDays = async (req, res) => {
+        const weekDays = await waitersDb.getDays()
+        const waiters = await waitersDb.getUsers()
+        let id = waiter.convertObj(waiters)
+        const waitersByDay = {}
+        for (let day of weekDays.map(obj => obj.day)) {
+            const users = await waitersDb.getWaitersByDay(day)
+            waitersByDay[day] = [... new Set(users.map(obj => obj.name))]
+        }
+        res.render('admin', {
+            days: waitersByDay,
+            waiters,
+            helpers: {
+                separator: function (user) {
+                    let working = ''
+                    if (user.length <= 2) {
+                        working = 'yellow_day'
+                    } else if (user.length === 3) {
+                        working = 'green_day'
+                    } else if (user.length > 3) {
+                        working = 'red_day'
+                    }
+                    return working
+                },
+            }
         })
     }
     const postAdminPage = async (req, res) => {
@@ -154,14 +205,12 @@ const Routes = (waiter, waitersDb) => {
             helpers: {
                 separator: function (user) {
                     let working = ''
-                    if (user.length === 0) {
-                        working = 'green_day'
-                    } else if (user.length >= 1 && user.length <= 2) {
+                    if (user.length <= 2) {
                         working = 'yellow_day'
                     } else if (user.length === 3) {
-                        working = 'red_day'
+                        working = 'green_day'
                     } else if (user.length > 3) {
-                        working = 'purple_day'
+                        working = 'red_day'
                     }
                     return working
                 },
@@ -252,7 +301,8 @@ const Routes = (waiter, waitersDb) => {
         deleteWaiters,
         resetDays,
         deleteUser,
-        clearSchedulePage
+        clearSchedulePage,
+        getAllDays
     }
 
 }
