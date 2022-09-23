@@ -32,6 +32,14 @@ const Waiter = () => {
         }
         return username && days ? `${name} you have succesfully scheduled your days.` : ''
     }
+    const addWaiterSuccessHandler = (existname, name) => {
+        if (existname === true) {
+            return name + ' already exist, signin...'
+        } else if (name && existname === false) {
+            return 'User created successful.'
+        }
+    }
+
 
     const validateDbName = (inputName, dbName) => inputName == dbName?.name
     const getName = () => typeof username === 'string' && username !== '' ? username.slice(0, 1).toUpperCase() + username.slice(1,).toLowerCase() : ''
@@ -45,7 +53,8 @@ const Waiter = () => {
         errorHandler,
         successHandler,
         validateDbName,
-        convertObj
+        convertObj,
+        addWaiterSuccessHandler
     }
 }
 

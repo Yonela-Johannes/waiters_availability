@@ -59,7 +59,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* background-color: rgb(94, 94, 94); */
+    align-items: center;
     padding: 40px;
     min-width: 600px;
 }
@@ -173,6 +173,7 @@ header {
 
 .radio-selectors {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
@@ -208,6 +209,7 @@ header {
 
 .days {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
@@ -553,4 +555,19 @@ span.day {
 
 .schedule{
     color: #323330;
+}
+
+@Media only screen and (max-width: 800px){
+    .radio-selectors {
+      flex-direction: column;
+      align-self: flex-start;
+      justify-self: flex-start;
+      place-self: start;
+    }
+.title {
+    font-size: 35px;
+}
+    .days {
+        flex-direction: column;
+    }
 }

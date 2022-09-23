@@ -26,7 +26,7 @@ const Routes = (waiter, waitersDb) => {
         const user = req.session.user = username;
         res.render('addWaiter', {
             error: waiter.errorHandler(),
-            success: waiter.successHandler(existName, username)
+            success: waiter.addWaiterSuccessHandler(existName, username)
         })
     }
 
@@ -216,8 +216,7 @@ const Routes = (waiter, waitersDb) => {
         waiter.setName(username)
         waiter.setDays(day)
         res.render('admin', {
-            error: waiter.errorHandler,
-            success: waiter.successHandler,
+            success: 'All waiters remove successful.',
         })
     }
     const resetDays = async (req, res) => {
@@ -227,8 +226,7 @@ const Routes = (waiter, waitersDb) => {
         waiter.setName(username)
         waiter.setDays(day)
         res.render('admin', {
-            error: waiter.errorHandler,
-            success: waiter.successHandler,
+            success: "Days reset successful.",
         })
     }
 
