@@ -118,8 +118,8 @@ const Routes = (waiter, waitersDb) => {
         let days_available = []
         if (!!waiterDetails) {
             const { id } = waiterDetails
-            days_available = await waitersDb.getDay(id)
             getDay !== '' ? await waitersDb.storeWaiterAvailabilty(id, getDay) : ''
+            days_available = await waitersDb.getDay(id)
         }
         const [getAvailableDays] = days_available?.map(days => days)
         const allDays = (getAvailableDays || [])?.map(days => days.day)
