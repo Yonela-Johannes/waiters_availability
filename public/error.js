@@ -15,7 +15,7 @@ if (nameInput?.value == '') {
         success.classList.add('hide')
         if (success.innerHTML == 'Sign up successfull' || success.innerHTML.includes('You already exist') || success.innerHTML.includes('User created successful.')) {
             const username = JSON.parse(localStorage.getItem('name'))
-            window.location.href = `/waiter/${username}`
+            window.location.href = `/waiter/${username}`.toLowerCase()
         }
     }, 2500)
 }

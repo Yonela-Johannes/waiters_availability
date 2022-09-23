@@ -1,7 +1,7 @@
 const Waiter = () => {
     let username = ''
     let days;
-    const setName = (name) => username = name?.trim().replace(/[^a-z, ^A-Z]/g, '')
+    const setName = (name) => username = name?.trim().replace(/[^a-z, ^A-Z]/g, '').toLowerCase()
     const setDays = (day) => {
         if (day == '') return
         if (Array.isArray(day)) {
@@ -42,7 +42,7 @@ const Waiter = () => {
 
 
     const validateDbName = (inputName, dbName) => inputName == dbName?.name
-    const getName = () => typeof username === 'string' && username !== '' ? username.slice(0, 1).toUpperCase() + username.slice(1,).toLowerCase() : ''
+    const getName = () => typeof username === 'string' && username !== '' ? username : ''
     const getDays = () => days !== undefined && username !== '' && typeof username === 'string' ? days : ''
     const convertObj = (users) => users?.map(user => user.id)
     return {
