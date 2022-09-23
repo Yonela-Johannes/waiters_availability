@@ -148,9 +148,25 @@ const Routes = (waiter, waitersDb) => {
         const waiter = await waitersDb.getUser(username)
         const { id } = waiter
         await waitersDb.clearWaiterDays(id)
+        let days_available = []
+        if (!!waiter) {
+            const { id } = waiter
+            days_available = await waitersDb.getDay(id)
+        }
+        const [getAvailableDays] = days_available?.map(days => days)
+        const allDays = (getAvailableDays || [])?.map(days => days.day)
         res.render('schedule', {
             username,
             days,
+            helpers: {
+                separator: function (daysSep) {
+                    let isChecked = ''
+                    if (allDays.includes(daysSep)) {
+                        isChecked = 'Checked'
+                    }
+                    return isChecked
+                },
+            },
             waiter,
             success: `${username} your days reset successful`,
         })
