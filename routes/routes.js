@@ -82,10 +82,8 @@ const Routes = (waiter, waitersDb) => {
             const { id } = waiter
             days_available = await waitersDb.getDay(id)
         }
-
         const [getAvailableDays] = days_available?.map(days => days)
         const allDays = (getAvailableDays || [])?.map(days => days.day)
-        console.log(allDays)
         const success = req.flash()
         res.render('schedule', {
             username,
@@ -93,13 +91,10 @@ const Routes = (waiter, waitersDb) => {
             days,
             helpers: {
                 separator: function (daysSep) {
-                    console.log(daysSep)
-                    console.log(allDays.includes(daysSep))
                     let isChecked = ''
                     if (allDays.includes(daysSep)) {
                         isChecked = 'Checked'
                     }
-                    console.log(isChecked)
                     return isChecked
                 },
             },
@@ -120,19 +115,28 @@ const Routes = (waiter, waitersDb) => {
         const existName = waiter.validateDbName(name, dbName)
         existName === false && username ? await waitersDb.storeName(name) : '';
         const waiterDetails = await waitersDb.getUser(name)
-        let days_available = ''
+        let days_available = []
         if (!!waiterDetails) {
             const { id } = waiterDetails
             days_available = await waitersDb.getDay(id)
-            console.log(id)
-            console.log(days)
             getDay !== '' ? await waitersDb.storeWaiterAvailabilty(id, getDay) : ''
         }
+        const [getAvailableDays] = days_available?.map(days => days)
+        const allDays = (getAvailableDays || [])?.map(days => days.day)
         req.flash('success', 'you have successfully scheduled your days.')
         req.flash('error', 'schedule your days.')
         res.render('schedule', {
             username,
             days,
+            helpers: {
+                separator: function (daysSep) {
+                    let isChecked = ''
+                    if (allDays.includes(daysSep)) {
+                        isChecked = 'Checked'
+                    }
+                    return isChecked
+                },
+            },
             error: waiter.errorHandler(getDay, name),
             success: waiter.successHandler('', name),
         })
